@@ -38,23 +38,23 @@ After that you can use this code.. and Start the server by typing: npm start or 
 
  ## Car Parking 
 
- Api: https://outsidehomeautomation.herokuapp.com/carparking?id="Send your Data to Display"
+ Api: https://outsidehomeautomation.herokuapp.com/carparking?id=Send_your_data_to_display
 
  ## Mail Box 
 
- Api: https://outsidehomeautomation.herokuapp.com/mailbox?id="Send your Data to Display"
+ Api: https://outsidehomeautomation.herokuapp.com/mailbox?id=Send_your_data_to_display
 
  ## Door Watchman
 
- Api: https://outsidehomeautomation.herokuapp.com/door?id="Send your Data to Display"
+ Api: https://outsidehomeautomation.herokuapp.com/door?id=Send_your_data_to_display
 
  ## Solar Status
 
- Api: https://outsidehomeautomation.herokuapp.com/solar?id="Send your Data to Display"
+ Api: https://outsidehomeautomation.herokuapp.com/solar?id=Send_your_data_to_display
 
  ## Garden Care 
 
- Api: https://outsidehomeautomation.herokuapp.com/garden?id="Send your Data to Display"
+ Api: https://outsidehomeautomation.herokuapp.com/garden?id=Send_your_data_to_display
 
 
 
