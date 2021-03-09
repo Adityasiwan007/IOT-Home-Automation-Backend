@@ -1,5 +1,5 @@
 # Prerequisite:
-  npm, mongoDB
+  npm, mongoDB, Socket.io, Express. 
 
 # Steps:
 
