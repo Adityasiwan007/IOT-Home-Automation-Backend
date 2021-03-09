@@ -34,8 +34,7 @@ After that you can use this code.. and Start the server by typing: npm start or 
 
 ### For Git: 
 
-https://github.com/Adityasiwan007/IOT-Home-Automation.git
-
+https://github.com/Adityasiwan007/IOT-Home-Automation-Backend
 
 
 
@@ -44,6 +43,6 @@ https://github.com/Adityasiwan007/IOT-Home-Automation.git
 
 # APIS: 
 
- To check the sever is live or not: https://homeautomation.herokuapp.com
+ To check the sever is live or not: https://outsidehomeautomation.herokuapp.com
 
 
