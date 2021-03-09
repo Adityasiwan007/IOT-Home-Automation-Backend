@@ -20,13 +20,37 @@ io.on('connection', function(socket) {
   clients[socket.id] = socket;
   console.log('A user connected: '+ socket.id);
 
-  app.get('/test', function(req,res,next){
-    data=`ID:` + req.query.id
-    socket.emit('Ping', data);
-    res.send(data);
+  app.get('/carparking', function(req,res,next){
+    data=req.query.id
+    socket.broadcast.emit('carparking', data)
+    res.send('Hello from Server to Parking: '+data);
   });
 
-  socket.emit('Ping', data);
+  app.get('/door', function(req,res,next){
+    let dataDoor=req.query.id
+    socket.broadcast.emit('door', dataDoor)
+    res.send('Hello from Server to door: '+dataDoor);
+  });
+
+  app.get('/mailbox', function(req,res,next){
+    let dataMail=req.query.id
+    socket.broadcast.emit('mailbox', dataMail)
+    res.send('Hello from Server to Mail: '+dataMail);
+  });
+  
+  app.get('/garden', function(req,res,next){
+    let dataGarden=req.query.id
+    socket.broadcast.emit('garden', dataGarden)
+    res.send('Hello from Server to garden: '+dataGarden);
+  });
+  
+  app.get('/solar', function(req,res,next){
+    let dataSolar=req.query.id
+    socket.broadcast.emit('solar', dataSolar)
+    res.send('Hello from Server to Solar: '+dataSolar);
+  });
+  
+
 
 
   socket.on('disconnect', function () {

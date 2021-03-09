@@ -20,30 +20,45 @@
                 document.getElementById("myText").innerHTML=lines;
               })
 
-          // $.get(`/test`, function(vid1) { 
-          //       let result1= vid1
-          //       lines1=`<h1> Pikachu: ${result1} </h1>`
-          //       document.getElementById("myText1").innerHTML=lines1;
-          //       })  
-          
-          
     let dataX
     // var socket = io();
     var socket = io()
-    socket.on('Ping', function (data) {
-      
-      dataX=data
-      console.log('Aditya'+dataX)
-        distance=`<b>Collision Distance</b>: ${dataX}`
+
+    socket.on('carparking', function (data) {
+      console.log('Aditya'+data)
+        distance=`<b>Collision Distance</b>: ${data}`
         document.getElementById("myText1").innerHTML=distance;
     });
 
+    socket.on('door', function (dataDoor) {
+        distance=`<b>Door Status</b>: ${dataDoor}`
+        document.getElementById("myText2").innerHTML=distance;
+    });
+
+    socket.on('mailbox', function (dataDoor) {
+        distance=`<b>Mail Box: </b>: ${dataDoor}`
+        document.getElementById("myText3").innerHTML=distance;
+    });
+
+    socket.on('garden', function (dataDoor) {
+        distance=`<b>Gardening: </b>: ${dataDoor}`
+        document.getElementById("myText4").innerHTML=distance;
+    });
+
+    socket.on('solar', function (dataDoor) {
+        distance=`<b>Door Status</b>: ${dataDoor}`
+        document.getElementById("myText5").innerHTML=distance;
+    });
 
 
            
   </script>
   <p id="myText" class="center"></p>
   <p id="myText1" ></p>
+  <p id="myText2" ></p>
+  <p id="myText3" ></p>
+  <p id="myText4" ></p>
+  <p id="myText5" ></p>
   <img src="public/logo.png" alt="Italian Trulli" class="center" >
   <img src="public/pika.png" alt="Italian Trulli" class="center" style="height: 500px; width: 500px;">
 </body>
