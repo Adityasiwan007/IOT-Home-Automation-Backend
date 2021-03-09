@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<style>
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src = "/socket.io/socket.io.js"></script>
+  <script>
+    
+
+      $.get(`/checkLive`, function(vid){ 
+                let result = vid
+                lines=`<h1> ${result} </h1>`
+                document.getElementById("myText").innerHTML=lines;
+              })
+
+          // $.get(`/test`, function(vid1) { 
+          //       let result1= vid1
+          //       lines1=`<h1> Pikachu: ${result1} </h1>`
+          //       document.getElementById("myText1").innerHTML=lines1;
+          //       })  
+          
+          
+    let dataX
+    // var socket = io();
+    var socket = io()
+    socket.on('Ping', function (data) {
+      
+      dataX=data
+      console.log('Aditya'+dataX)
+        distance=`<b>Collision Distance</b>: ${dataX}`
+        document.getElementById("myText1").innerHTML=distance;
+    });
+
+
+
+           
+  </script>
+  <p id="myText" class="center"></p>
+  <p id="myText1" ></p>
+  <img src="public/logo.png" alt="Italian Trulli" class="center" >
+  <img src="public/pika.png" alt="Italian Trulli" class="center" style="height: 500px; width: 500px;">
+</body>
+</html>
+
+
