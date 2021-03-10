@@ -26,7 +26,7 @@ io.on('connection', function(socket) {
     {
       data='Stop the car'
     }
-    else if(data >15)
+    else if(data >30)
     {
       data='No Car Found'
     }
