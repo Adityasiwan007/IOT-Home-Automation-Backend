@@ -8,7 +8,7 @@ var clients = {};
 let data='start'
 
 app.get('/checkLive',async (req,res,next)=>{
-    let pro_time = "Yes, You are Live in heroku. Welcome to the Home Automation BackEnd Testing :)";
+    let pro_time = "Welcome to the OutSide Home Automation.)";
     res.send(pro_time);
 });
 

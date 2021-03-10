@@ -1,67 +1,175 @@
 <!DOCTYPE html>
-<html>
-<style>
-  .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-</style>
-<body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Automation</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|PT+Serif:700" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src = "/socket.io/socket.io.js"></script>
-  <script>
-    
+</head>
 
-      $.get(`/checkLive`, function(vid){ 
-                let result = vid
-                lines=`<h1> ${result} </h1>`
-                document.getElementById("myText").innerHTML=lines;
-              })
+<body class="is-boxed has-animations">
+<script>
+var socket = io()
 
-    let dataX
-    // var socket = io();
-    var socket = io()
+socket.on('carparking', function (data) {
+  console.log('Aditya'+data)
+    distance=`<p>Car distance from wall: ${data} </p>`
+    document.getElementById("myText1").innerHTML=distance;
+});
 
-    socket.on('carparking', function (data) {
-      console.log('Aditya'+data)
-        distance=`<b>Collision Distance</b>: ${data}`
-        document.getElementById("myText1").innerHTML=distance;
-    });
+socket.on('door', function (dataDoor) {
+    distance=`<b>Door Status</b>: ${dataDoor}`
+    document.getElementById("myText2").innerHTML=distance;
+});
 
-    socket.on('door', function (dataDoor) {
-        distance=`<b>Door Status</b>: ${dataDoor}`
-        document.getElementById("myText2").innerHTML=distance;
-    });
+socket.on('mailbox', function (dataDoor) {
+    distance=`<b>Mail Box Msg: </b>: ${dataDoor}`
+    document.getElementById("myText3").innerHTML=distance;
+});
 
-    socket.on('mailbox', function (dataDoor) {
-        distance=`<b>Mail Box: </b>: ${dataDoor}`
-        document.getElementById("myText3").innerHTML=distance;
-    });
+socket.on('garden', function (dataDoor) {
+    distance=`<b>Gardening Watering: </b>: ${dataDoor}`
+    document.getElementById("myText4").innerHTML=distance;
+});
 
-    socket.on('garden', function (dataDoor) {
-        distance=`<b>Gardening: </b>: ${dataDoor}`
-        document.getElementById("myText4").innerHTML=distance;
-    });
+socket.on('solar', function (dataDoor) {
+    distance=`<b>Solar Charging: </b>: ${dataDoor}`
+    document.getElementById("myText5").innerHTML=distance;
+});
+</script>
 
-    socket.on('solar', function (dataDoor) {
-        distance=`<b>Door Status</b>: ${dataDoor}`
-        document.getElementById("myText5").innerHTML=distance;
-    });
 
+
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+                            <a href="#">
+                                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <title>Home Automation</title>
+                                    <defs>
+                                        <radialGradient cy="0%" fx="50%" fy="0%" r="100%" id="logo-gradient">
+                                            <stop stop-color="#FFF" offset="0%"/>
+                                            <stop stop-color="#FFF" stop-opacity=".24" offset="100%"/>
+                                        </radialGradient>
+                                    </defs>
+                                    <path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm0-10a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="url(#logo-gradient)" fill-rule="evenodd"/>
+                                </svg>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero text-light text-center">
+                <div class="container-sm">
+                    <div class="hero-inner">
+                        <h1 class="hero-title h2-mobile mt-0 is-revealing">OutSide Home Automation</h1>
+                        <p class="hero-paragraph is-revealing">We will watch your outside components for you home with camera and will give you important updates.</p>
+                        
+                        <div class="hero-media">
+                            <img src="public/home.png" >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+          
+
+            <section class="features-extended section">
+                <div class="container">
+                    <div class="features-extended-inner section-inner has-top-divider">
+                        <div class="features-extended-header text-center">
+                            <div class="container-sm">
+                                <h2 class="section-title mt-0">Your Home's Outside Components</h2>
+                                <p class="section-paragraph">There are maily 5 components giving live status... Scroll down to see.</p>
+                            </div>
+                        </div>
+                        <div class="feature-extended">
+                            <div class="feature-extended-image is-revealing">
+                                <img src="public/car.png" width="480" height="360" viewBox="0 0 480 360" >
+                            </div>
+                            <div class="feature-extended-body">
+                                <h3 class="mt-0">Car Parking Automation</h3>
+                                <p id="myText1" ></p>
+                            </div>
+                        </div>
+                        <div class="feature-extended">
+                            <div class="feature-extended-image is-revealing">
+                                <img src="public/door.png" width="480" height="360" viewBox="0 0 480 360" >
+                                
+                            </div>
+                            <div class="feature-extended-body">
+                                <h3 class="mt-0">Door Security Status</h3>
+                                <p id="myText2"></p> 
+                            </div>
+                        </div>
+                        <div class="feature-extended">
+                            <div class="feature-extended-image is-revealing">
+                                <img src="public/mail.png" width="480" height="360" viewBox="0 0 480 360" >
+                            </div>
+                            <div class="feature-extended-body">
+                                <h3 class="mt-0">Mail Box Notification</h3>
+                                <p id="myText3"></p> 
+                            </div>
+                        </div>
+
+                        <div class="feature-extended">
+                            <div class="feature-extended-image is-revealing">
+                                <img src="public/garden.png" width="480" height="360" viewBox="0 0 480 360" >
+                            </div>
+                            <div class="feature-extended-body">
+                                <h3 class="mt-0">Garden Watering Status</h3>
+                                <p id="myText4"></p> 
+                            </div>
+                        </div>
+
+                        <div class="feature-extended">
+                            <div class="feature-extended-image is-revealing">
+                                <img src="public/solar.png" width="480" height="360" viewBox="0 0 480 360" >
+                            </div>
+                            <div class="feature-extended-body">
+                                <h3 class="mt-0">Solar Charging Status</h3>
+                                <p id="myText5"></p> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
            
-  </script>
-  <p id="myText" class="center"></p>
-  <p id="myText1" ></p>
-  <p id="myText2" ></p>
-  <p id="myText3" ></p>
-  <p id="myText4" ></p>
-  <p id="myText5" ></p>
-  <img src="public/logo.png" alt="Italian Trulli" class="center" >
-  <img src="public/pika.png" alt="Italian Trulli" class="center" style="height: 500px; width: 500px;">
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="#">
+                            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <title>Home Automation</title>
+                                <defs>
+                                    <radialGradient cy="0%" fx="50%" fy="0%" r="100%" id="logo-gradient-footer">
+                                        <stop stop-color="#00A2B8" offset="0%"/>
+                                        <stop stop-color="#00F9D2" offset="100%"/>
+                                    </radialGradient>
+                                </defs>
+                                <path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm0-10a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="url(#logo-gradient-footer)" fill-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="footer-copyright">&copy; 2021 IOT Group Project, Aditya</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="dist/js/main.min.js"></script>
 </body>
 </html>
-
-
