@@ -22,6 +22,14 @@ io.on('connection', function(socket) {
 
   app.get('/carparking', function(req,res,next){
     data=req.query.id
+    if(data<=6)
+    {
+      data='Stop the car'
+    }
+    else if(data >15)
+    {
+      data='No Car Found'
+    }
     socket.broadcast.emit('carparking', data)
     res.send('Hello from Server to Parking: '+data);
   });
