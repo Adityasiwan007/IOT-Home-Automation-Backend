@@ -66,6 +66,13 @@ After that you can use this code.. and Start the server by typing: npm start or 
 
 https://github.com/Adityasiwan007/IOT-Home-Automation-Backend
 
+# ------------------------------------------------------
+
+
+### Demo: 
+
+<img src="demo/1.png" width="980">  
+
 
 
 
