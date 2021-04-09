@@ -23,12 +23,12 @@ socket.on('carparking', function (data) {
 });
 
 socket.on('door', function (dataDoor) {
-    distance=`<b>Door Status</b>: ${dataDoor}`
+    distance=`<b>Door Status: ${dataDoor.replaceAll("_"," ")}</b>`
     document.getElementById("myText2").innerHTML=distance;
 });
 
 socket.on('mailbox', function (dataDoor) {
-    distance=`<b>Mail Box Msg: </b> ${dataDoor}`
+    distance=`<b>Mail Box Msg: ${dataDoor.replaceAll("_"," ")}</b>`
     document.getElementById("myText3").innerHTML=distance;
 });
 
@@ -38,7 +38,7 @@ socket.on('garden', function (dataDoor) {
 });
 
 socket.on('solar', function (dataDoor) {
-    distance=`<b>Solar Charging: </b> ${dataDoor}`
+    distance=`<b>Solar Charging: ${dataDoor.replaceAll("_"," ")}</b>`
     document.getElementById("myText5").innerHTML=distance;
 });
 </script>
