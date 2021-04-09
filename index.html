@@ -33,7 +33,7 @@ socket.on('mailbox', function (dataDoor) {
 });
 
 socket.on('garden', function (dataDoor) {
-    distance=`<b>Gardening Watering: ${dataDoor.replace("_"," ")}</b>`
+    distance=`<b>Garden Status: ${dataDoor.replaceAll("_"," ")}</b>`
     document.getElementById("myText4").innerHTML=distance;
 });
 
