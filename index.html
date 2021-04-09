@@ -28,17 +28,17 @@ socket.on('door', function (dataDoor) {
 });
 
 socket.on('mailbox', function (dataDoor) {
-    distance=`<b>Mail Box Msg: </b>: ${dataDoor}`
+    distance=`<b>Mail Box Msg: </b> ${dataDoor}`
     document.getElementById("myText3").innerHTML=distance;
 });
 
 socket.on('garden', function (dataDoor) {
-    distance=`<b>Gardening Watering: </b>: ${dataDoor}`
+    distance=`<b>Gardening Watering: ${dataDoor.replace("_"," ")}</b>`
     document.getElementById("myText4").innerHTML=distance;
 });
 
 socket.on('solar', function (dataDoor) {
-    distance=`<b>Solar Charging: </b>: ${dataDoor}`
+    distance=`<b>Solar Charging: </b> ${dataDoor}`
     document.getElementById("myText5").innerHTML=distance;
 });
 </script>
