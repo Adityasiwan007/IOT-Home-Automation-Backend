@@ -41,7 +41,7 @@ io.on('connection', function(socket) {
   });
 
   app.post('/mailbox', function(req,res,next){
-    console.log(req.body);
+    // console.log(req.body);
     let dataMail="Testing"
     socket.broadcast.emit('mailbox', dataMail)
     res.send('Hello from Server to Mail: '+dataMail);
