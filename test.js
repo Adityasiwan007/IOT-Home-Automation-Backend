@@ -40,8 +40,9 @@ io.on('connection', function(socket) {
     res.send('Hello from Server to door: '+dataDoor);
   });
 
-  app.get('/mailbox', function(req,res,next){
-    let dataMail=req.query.id
+  app.post('/mailbox', function(req,res,next){
+    console.log(req.body);
+    let dataMail="Testing"
     socket.broadcast.emit('mailbox', dataMail)
     res.send('Hello from Server to Mail: '+dataMail);
   });
