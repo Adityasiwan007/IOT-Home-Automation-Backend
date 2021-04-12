@@ -2,6 +2,7 @@ var express= require('express');
 const app = module.exports.app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
+fs = require('fs');
 
 const port = process.env.PORT || 8005;
 var clients = {};
@@ -41,7 +42,17 @@ io.on('connection', function(socket) {
   });
 
   app.post('/mailbox', function(req,res,next){
-    console.log("Neel",req);
+    console.log(req.param);
+
+    var f = fs.createWriteStream('out.jpeg');
+        req.on('data', function (data) {
+            f.write(data);
+        });
+        req.on('end', function () {
+            f.end();
+        });
+
+        
     let dataMail="Testing"
     socket.broadcast.emit('mailbox', dataMail)
     res.send('Hello from Server to Mail: '+dataMail);
