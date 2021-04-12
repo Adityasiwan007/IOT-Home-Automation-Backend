@@ -42,17 +42,17 @@ io.on('connection', function(socket) {
   });
 
   app.post('/mailbox', function(req,res,next){
-    console.log("Aditya: ",req.name);
+    console.log("Aditya: ",req.imageFile);
 
-    var f = fs.createWriteStream('out.jpeg');
+    //var f = fs.createWriteStream('out.jpeg');
     
-        req.on('data', function (data) {
-             f.write(data.name);
-             console.log("DOne: ",req.imageFile);
-        });
-        req.on('end', function () {
-           f.end();
-        });
+        // req.on('data', function (data) {
+        //      f.write(data.name);
+             
+        // });
+        // req.on('end', function () {
+        //    f.end();
+        // });
 
     //     req.on('uncaughtException', function (err) {
     //       console.error(err.stack); // either logs on console or send to other server via api call.
