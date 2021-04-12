@@ -42,9 +42,9 @@ io.on('connection', function(socket) {
   });
 
   app.post('/mailbox', function(req,res,next){
-    console.log("Headers: ",req.headers);
+    console.log("Headers: ",req.imageFile);
 
-    console.log("Body: : ",req.body);
+    console.log("Body: : ",req.message);
 
     //var f = fs.createWriteStream('out.jpeg');
     
