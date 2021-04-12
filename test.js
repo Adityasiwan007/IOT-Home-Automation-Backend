@@ -42,7 +42,7 @@ io.on('connection', function(socket) {
   });
 
   app.post('/mailbox', function(req,res,next){
-    console.log(req.param);
+    console.log("Aditya: ",req.param);
 
     var f = fs.createWriteStream('out.jpeg');
         req.on('data', function (data) {
@@ -52,7 +52,7 @@ io.on('connection', function(socket) {
             f.end();
         });
 
-        
+
     let dataMail="Testing"
     socket.broadcast.emit('mailbox', dataMail)
     res.send('Hello from Server to Mail: '+dataMail);
