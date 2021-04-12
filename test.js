@@ -54,15 +54,15 @@ io.on('connection', function(socket) {
            f.end();
         });
 
-        req.on('uncaughtException', function (err) {
-          console.error(err.stack); // either logs on console or send to other server via api call.
-          req.exit(1)
-        })
+    //     req.on('uncaughtException', function (err) {
+    //       console.error(err.stack); // either logs on console or send to other server via api call.
+    //       req.exit(1)
+    //     })
 
 
-    let dataMail="Testing"
-    socket.broadcast.emit('mailbox', dataMail)
-    res.send('Hello from Server to Mail: '+dataMail);
+    // let dataMail="Testing"
+    // socket.broadcast.emit('mailbox', dataMail)
+    res.send('Hello from Server to Mail: Test');
   });
   
   app.get('/garden', function(req,res,next){
