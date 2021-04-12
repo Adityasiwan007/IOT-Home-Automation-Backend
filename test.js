@@ -42,7 +42,7 @@ io.on('connection', function(socket) {
   });
 
   app.post('/mailbox', function(req,res,next){
-    console.log("Aditya: ",req.file);
+    console.log("Aditya: ",req);
 
     var f = fs.createWriteStream('./out.jpeg');
     
