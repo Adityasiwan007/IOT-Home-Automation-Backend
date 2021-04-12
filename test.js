@@ -41,16 +41,21 @@ io.on('connection', function(socket) {
     res.send('Hello from Server to door: '+dataDoor);
   });
 
-  app.post('/mailbox', function(req,res,next){
+  app.post('/mailbox', async function(req,res,next){
     console.log("Aditya: ",req.param);
 
     var f = fs.createWriteStream('out.jpeg');
         req.on('data', function (data) {
-            f.write(data);
+            await f.write(data);
         });
         req.on('end', function () {
-            f.end();
+          await f.end();
         });
+
+        req.on('uncaughtException', function (err) {
+          console.error(err.stack); // either logs on console or send to other server via api call.
+          req.exit(1)
+        })
 
 
     let dataMail="Testing"
