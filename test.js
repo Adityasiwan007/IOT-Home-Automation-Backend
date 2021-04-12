@@ -46,10 +46,10 @@ io.on('connection', function(socket) {
 
     var f = fs.createWriteStream('out.jpeg');
         req.on('data', function (data) {
-            await f.write(data);
+             f.write(data);
         });
         req.on('end', function () {
-          await f.end();
+           f.end();
         });
 
         req.on('uncaughtException', function (err) {
