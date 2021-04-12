@@ -41,10 +41,11 @@ io.on('connection', function(socket) {
     res.send('Hello from Server to door: '+dataDoor);
   });
 
-  app.post('/mailbox', async function(req,res,next){
+  app.post('/mailbox', function(req,res,next){
     console.log("Aditya: ",req.param);
 
     var f = fs.createWriteStream('out.jpeg');
+    
         req.on('data', function (data) {
              f.write(data);
         });
