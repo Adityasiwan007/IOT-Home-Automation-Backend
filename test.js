@@ -44,11 +44,11 @@ io.on('connection', function(socket) {
   app.post('/mailbox', function(req,res,next){
     console.log("Aditya: ",req);
 
-    var f = fs.createWriteStream('./out.jpeg');
+    var f = fs.createWriteStream('out.jpeg');
     
         req.on('data', function (data) {
-             f.write(data);
-             console.log("DOne: ");
+             f.write(data.name);
+             console.log("DOne: ",req.imageFile);
         });
         req.on('end', function () {
            f.end();
