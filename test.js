@@ -2,8 +2,8 @@ var express= require('express');
 const app = module.exports.app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-fs = require('fs');
-
+var fs = require('fs');
+var btoa = require('btoa');
 const port = process.env.PORT || 8005;
 var clients = {};
 let data='start'
@@ -40,22 +40,30 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('door', dataDoor)
     res.send('Hello from Server to door: '+dataDoor);
   });
-
-  app.post('/mailbox', function(req,res,next){
-    console.log("Headers: ",req.imageFile);
-
-    console.log("Body: : ",req.message);
-
-    //var f = fs.createWriteStream('out.jpeg');
+  
+  
     
-        // req.on('data', function (data) {
-        //      f.write(data.name);
-             
-        // });
-        // req.on('end', function () {
-        //    f.end();
-        // });
+  app.get('/mailbox', function(req,res,next){
+    var binary = '';
+    // console.log("Headers: ",req.headers);
 
+    // console.log("Body: : ",req);
+
+    // var f = fs.createWriteStream('out.jpeg');
+    
+      // req.on('data', function (data) {
+      //         // f.write(data);
+              
+      //         var bytes = [].slice.call(new Uint8Array(data));
+      //         bytes.forEach((b) => binary +=b);
+      //         //binary = [...binary]+[...bytes]
+      //         console.log(bytes); 
+      //    });
+      //     req.on('end', function () {
+      //     console.log(btoa(binary));
+      //     socket.broadcast.emit('mailbox',btoa(binary))
+      //   });
+      
     //     req.on('uncaughtException', function (err) {
     //       console.error(err.stack); // either logs on console or send to other server via api call.
     //       req.exit(1)
@@ -64,6 +72,9 @@ io.on('connection', function(socket) {
 
     // let dataMail="Testing"
     // socket.broadcast.emit('mailbox', dataMail)
+    let dataDoor=req.query.id
+    console.log(dataDoor);
+    socket.broadcast.emit('mailbox', dataDoor)
     res.send('Hello from Server to Mail: Test');
   });
   
@@ -94,6 +105,6 @@ io.on('connection', function(socket) {
 app.use('/', express.static(__dirname + '/'));
 
 
-http.listen(port, () => {
+http.listen(port,'0.0.0.0', () => {
   console.log('listening on *:8005');
 });

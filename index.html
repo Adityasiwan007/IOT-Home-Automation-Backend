@@ -14,6 +14,19 @@
 
 <body class="is-boxed has-animations">
 <script>
+function myFunction() {
+  fetch('YOURBASE_URL/openmail').then((resp)=>{console.log(resp);})
+}
+function myFunction2() {
+    const pass_box = document.getElementById('pass-box');
+    const password = pass_box.textContent;
+    const set_pass = '1234'
+    if(password === set_pass){
+  fetch('YOURBASE_URL/dooropen').then((resp)=>{console.log(resp);})
+}}
+function myFunction3() {
+  fetch('YOURBASE_URL/doorclose').then((resp)=>{console.log(resp);})
+}
 var socket = io()
 
 socket.on('carparking', function (data) {
@@ -28,8 +41,11 @@ socket.on('door', function (dataDoor) {
 });
 
 socket.on('mailbox', function (dataDoor) {
-    distance=`<b>Mail Box Msg: ${dataDoor.replaceAll("_"," ")}</b>`
+    distance=`<b>Mail Box Msg:<img src="data:image/png;base64,${dataDoor}"></img> </b>`
+    
     document.getElementById("myText3").innerHTML=distance;
+    //document.getElementById("b1").innerHTML=buttons;
+
 });
 
 socket.on('garden', function (dataDoor) {
@@ -111,6 +127,12 @@ socket.on('solar', function (dataDoor) {
                             <div class="feature-extended-body">
                                 <h3 class="mt-0">Door Security Status</h3>
                                 <p id="myText2"></p> 
+                                <p id="b1">
+                                    <input id = 'pass-box' type = 'text' placeholder="Enter PIN"></input><br>
+                                    <button type="button" onclick="myFunction2()">Open Door!</button>
+                                    <button type="button" onclick="myFunction3()">Close Door!</button>
+                                </p> 
+                         
                             </div>
                         </div>
                         <div class="feature-extended">
@@ -120,6 +142,8 @@ socket.on('solar', function (dataDoor) {
                             <div class="feature-extended-body">
                                 <h3 class="mt-0">Mail Box Notification</h3>
                                 <p id="myText3"></p> 
+                                <p id="b1">
+                                    <button type="button" onclick="myFunction()">Open Mail Box!</button></p> 
                             </div>
                         </div>
 
@@ -165,7 +189,7 @@ socket.on('solar', function (dataDoor) {
                             </svg>
                         </a>
                     </div>
-                    <div class="footer-copyright">&copy; 2021 IOT Group Project, Aditya</div>
+                    <div class="footer-copyright">&copy; 2021 IOT Group Project Neel, Vishal, Nilesh, Chitransh, Aditya</div>
                 </div>
             </div>
         </footer>
