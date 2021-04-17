@@ -15,17 +15,57 @@
 <body class="is-boxed has-animations">
 <script>
 function myFunction() {
-  fetch('YOURBASE_URL/openmail').then((resp)=>{console.log(resp);})
+  fetch('https://cors-anywhere.herokuapp.com/http://2.tcp.ngrok.io:10218/close',{
+      method:'PUT'
+  }).then((resp)=>{console.log(resp);})
 }
+function myFunction4(){
+    fetch('https://cors-anywhere.herokuapp.com/http://2.tcp.ngrok.io:10218/open',{
+      method:'PUT'
+  }).then((resp)=>{console.log(resp);})}
 function myFunction2() {
     const pass_box = document.getElementById('pass-box');
-    const password = pass_box.textContent;
+    const password = pass_box.value;
     const set_pass = '1234'
+    console.log(password)
     if(password === set_pass){
-  fetch('YOURBASE_URL/dooropen').then((resp)=>{console.log(resp);})
+  fetch('https://cors-anywhere.herokuapp.com/http://8.tcp.ngrok.io:19576/open',{
+      method:'PUT'
+  }).then((resp)=>{console.log(resp);})
 }}
 function myFunction3() {
-  fetch('YOURBASE_URL/doorclose').then((resp)=>{console.log(resp);})
+  fetch('https://cors-anywhere.herokuapp.com/http://8.tcp.ngrok.io:19576/close',{method:'PUT'}).then((resp)=>{console.log(resp);})
+}
+function myFunction5(){
+    const solar_box = document.getElementById('solar-time');
+    const time = solar_box.value;
+    if(time === '8' || time === '9' || time ==='10'){
+        fetch('https://cors-anywhere.herokuapp.com/http://4.tcp.ngrok.io:10346/?param1=45',{method:'GET'}).then((resp)=>{console.log(resp);
+            distance=`<b>Solar Charging: ${'2.5 volts'}</b>`
+        document.getElementById("myText5").innerHTML=distance; 
+        })
+    }
+    if(time === '11'|| time === '12'|| time === '13'){
+        fetch('https://cors-anywhere.herokuapp.com/http://4.tcp.ngrok.io:10346/?param1=70',{method:'GET'}).then((resp)=>{console.log(resp);
+            distance=`<b>Solar Charging: ${'2.5 volts'}</b>`
+        document.getElementById("myText5").innerHTML=distance; 
+        })
+            
+    
+    }
+    if(time === '14'|| time === '15' || time ==='16'){
+        fetch('https://cors-anywhere.herokuapp.com/http://4.tcp.ngrok.io:10346/?param1=90',{method:'GET'}).then((resp)=>{console.log(resp);
+        distance=`<b>Solar Charging: ${'3 volts'}</b>`
+        document.getElementById("myText5").innerHTML=distance;     });
+    
+    }
+    if(time === '16' || time ==='17' || time ==='18')
+    {
+        fetch('https://cors-anywhere.herokuapp.com/http://4.tcp.ngrok.io:10346/?param1=125',{method:'GET'}).then((resp)=>{console.log(resp);
+        distance=`<b>Solar Charging: ${'4 volts'}</b>`
+        document.getElementById("myText5").innerHTML=distance; });    
+    
+    }
 }
 var socket = io()
 
@@ -144,6 +184,7 @@ socket.on('solar', function (dataDoor) {
                                 <p id="myText3"></p> 
                                 <p id="b1">
                                     <button type="button" onclick="myFunction()">Open Mail Box!</button></p> 
+                                    <button type="button" onclick="myFunction4()">Close Mail Box!</button></p> 
                             </div>
                         </div>
 
@@ -163,6 +204,8 @@ socket.on('solar', function (dataDoor) {
                             </div>
                             <div class="feature-extended-body">
                                 <h3 class="mt-0">Solar Charging Status</h3>
+                                <input id = 'solar-time' type = 'text' placeholder="Enter Time"></input><br>
+                                <button type="button" onclick="myFunction5()">Adjust</button>
                                 <p id="myText5"></p> 
                             </div>
                         </div>

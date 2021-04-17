@@ -43,7 +43,7 @@ io.on('connection', function(socket) {
   
   
     
-  app.get('/mailbox', function(req,res,next){
+  app.post('/mailbox', function(req,res,next){
     var binary = '';
     // console.log("Headers: ",req.headers);
 
@@ -51,9 +51,6 @@ io.on('connection', function(socket) {
 
     // var f = fs.createWriteStream('out.jpeg');
     
-      // req.on('data', function (data) {
-      //         // f.write(data);
-              
       //         var bytes = [].slice.call(new Uint8Array(data));
       //         bytes.forEach((b) => binary +=b);
       //         //binary = [...binary]+[...bytes]
@@ -72,7 +69,7 @@ io.on('connection', function(socket) {
 
     // let dataMail="Testing"
     // socket.broadcast.emit('mailbox', dataMail)
-    let dataDoor=req.query.id
+    let dataDoor=req.url.slice(12);
     console.log(dataDoor);
     socket.broadcast.emit('mailbox', dataDoor)
     res.send('Hello from Server to Mail: Test');
