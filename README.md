@@ -24,6 +24,8 @@ After that you can use this code.. and Start the server by typing: npm start or 
 
  We have used Node JS (Express and Socket.IO) to create the cloud and hosted on Heroku. Since we have 5 modules, so we have created 5 different micro services. Each services provides one Api which will take care of its assigned modules.
 
+You can find all the IOT ESP32 Hardware sensors code here: https://github.com/NeelSagar39/IOT-HOMEAUTOMATION-HARDWARE
+
 # Service Oriented Architecture:
 
 <img src="demo/Arch.jpeg" width="580"> 
