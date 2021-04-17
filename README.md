@@ -1,5 +1,5 @@
 # Prerequisite:
-  npm, mongoDB, Socket.io, Express. 
+  npm, Socket.io, Express. 
 
 # Steps:
 
@@ -14,10 +14,6 @@ For installing express Setup:
  
   npm install express
   
-For loding all the data in the Database for 1 time user
-  
-  node data_loader.js
-  
 After that you can use this code.. and Start the server by typing: npm start or node test.js
 
 
@@ -25,6 +21,12 @@ After that you can use this code.. and Start the server by typing: npm start or 
 
  This is a Backend Node Js server hosted on Heroku, which will talk to multiple ESP32s via HTTP GET/POST.
  I am using Socket.IO to keep the connection alive and emiting the broadcasting data to frontend. 
+
+ We have used Node JS (Express and Socket.IO) to create the cloud and hosted on Heroku. Since we have 5 modules, so we have created 5 different micro services. Each services provides one Api which will take care of its assigned modules.
+
+# Service Oriented Architecture:
+
+<img src="demo/Arch.jpeg" width="580"> 
 
 # APIS: Deployed on heroku 
 
